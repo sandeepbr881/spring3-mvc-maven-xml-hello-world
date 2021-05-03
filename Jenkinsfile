@@ -22,6 +22,29 @@ pipeline{
                 
        
            }    
-           
-       }
-  }
+          
+          stage ('artifacts') {
+                
+                steps {
+                    
+                   archiveArtifacts 'target/*.war'
+                }
+                    
+       
+           }   
+            
+   
+             stage ('deploy') {
+                
+                steps {
+                    
+                     sh "curl -v -u admin:adminadmin -T /var/lib/jenkins/workspace/spring3/target/spring3-mvc-maven-xml-hello-world-1.0-SNAPSHOT.war 'http://ec2-13-233-18-4.ap-south-1.compute.amazonaws.com:8181/manager/text/deploy?path=/Jeethu100&update=true'"
+       
+                }     
+   
+           }
+      
+ }
+    
+    
+}
