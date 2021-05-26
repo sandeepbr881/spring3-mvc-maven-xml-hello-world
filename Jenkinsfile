@@ -29,7 +29,7 @@ agent any
             steps {
                 // Tomcat deploy
                 
-                withCredentials([usernameColonPassword(credentialsId: 'tomcat_credential', variable: 'tomcatusa')]) {sh "curl -v -u ${tomcatusa} -T /var/lib/jenkins/workspace/spring3/target/spring3-mvc-maven-xml-hello-world-1.0-SNAPSHOT.war 'http://ec2-15-207-54-130.ap-south-1.compute.amazonaws.com:8080/manager/text/deploy?path=/spring3&update=true'"
+                withCredentials([usernameColonPassword(credentialsId: 'tomcat_credential', variable: 'tomcatusa')]) {sh "curl -v -u ${tomcatusa} -T /var/lib/jenkins/workspace/spring3/target/spring3-mvc-maven-xml-hello-world-1.0-SNAPSHOT.war 'http://ec2-15-207-54-130.ap-south-1.compute.amazonaws.com:8080/manager/text/deploy?path=/spring100&update=true'"
     
                    }
                     
