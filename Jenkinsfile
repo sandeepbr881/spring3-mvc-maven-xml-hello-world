@@ -36,7 +36,7 @@ pipeline {
                     
             
 
-                  withCredentials([usernameColonPassword(credentialsId: 'tomcat_credential', variable: 'arunusa')]) {sh "curl -v -u ${arunusa} -T /var/lib/jenkins/workspace/spring3/target/spring3-mvc-maven-xml-hello-world-1.0-SNAPSHOT.war 'http://ec2-13-233-69-212.ap-south-1.compute.amazonaws.com:8081/manager/text/deploy?path=/Arun100&update=true'"           
+                  withCredentials([usernameColonPassword(credentialsId: 'tomcat_credential', variable: 'arunusa')]) {sh "curl -v -u ${arunusa} -T /var/lib/jenkins/workspace/spring3/target/spring3-mvc-maven-xml-hello-world-1.0-SNAPSHOT.war 'http://ec2-13-233-69-212.ap-south-1.compute.amazonaws.com:8081/manager/text/deploy?path=/Arunusa&update=true'"           
                }    
            
             
