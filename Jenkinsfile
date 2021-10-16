@@ -1,20 +1,24 @@
 pipeline {
 agent any
-      
-    
-   stages {
-        stage ('SCM') {
+    stages {
+        stage('SCM') {
             steps {
-                 git credentialsId: 'github_credentials1', url: 'https://github.com/Ratheesh1986/spring3-mvc-maven-xml-hello-world.git'
-                }
-           }
-        stage ('Build') {
+                // Get some code from a GitHub repository
+                   git credentialsId: 'github_credentials', url: 'https://github.com/Ratheesh1986/spring3-mvc-maven-xml-hello-world.git'
+                              
+            }
+        }  
+   stage('Build') {
             steps {
-                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
-                }
-           }
-           
-        stage ('Artifacts') {
+                // maven packages
+                     sh "mvn -Dmaven.test.failure.ignore=true clean package"
+                              
+            }
+
+            
+       }
+   
+   stage ('Artifacts') {
             steps {
                 
                  archiveArtifacts 'target/*.war'
@@ -25,14 +29,15 @@ agent any
             steps {
                 // Tomcat deploy
                     
-                    sh "curl -v -u admin:adminadmin -T /var/lib/jenkins/workspace/spring3/target/spring3-mvc-maven-xml-hello-world-1.0-SNAPSHOT.war 'http://ec2-13-127-27-40.ap-south-1.compute.amazonaws.com:8080/manager/text/deploy?path=/jyothi100&update=true'"
+                    sh "curl -v -u admin:adminadmin -T /var/lib/jenkins/workspace/spring3/target/spring3-mvc-maven-xml-hello-world-1.0-SNAPSHOT.war 'http://ec2-13-232-142-131.ap-south-1.compute.amazonaws.com:8080/manager/text/deploy?path=/aswin&update=true'"
                               
                }    
            
             
            } 
-         
-        }
-
-    
-   }
+   
+  
+            
+    }
+        
+    }
